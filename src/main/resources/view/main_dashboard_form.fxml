@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainAnchoePane" prefHeight="591.0" prefWidth="938.0" stylesheets="@../style/dashboard_form_style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.MainDashboardFormController">
+   <children>
+      <AnchorPane fx:id="mainbuttonpane" prefHeight="591.0" prefWidth="226.0">
+         <children>
+            <Button layoutX="62.0" layoutY="195.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" styleClass="side-corner-round-button-black" text="Button" />
+            <Button layoutX="62.0" layoutY="264.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" styleClass="side-corner-round-button-black" text="Button" />
+            <Button layoutX="62.0" layoutY="338.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" styleClass="side-corner-round-button-black" text="Button" />
+            <Button layoutX="62.0" layoutY="411.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" styleClass="side-corner-round-button-black" text="Button" />
+            <ImageView fitHeight="103.0" fitWidth="109.0" layoutX="63.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/img/boy.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="237.0" layoutY="21.0" prefHeight="564.0" prefWidth="696.0">
+         <children>
+            <AnchorPane layoutX="53.0" layoutY="29.0" prefHeight="156.0" prefWidth="608.0" styleClass="sub_panes">
+               <children>
+                  <ImageView fitHeight="133.0" fitWidth="138.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/img/icons8-book-management-48.png" />
+                     </image></ImageView>
+                  <Label layoutX="230.0" layoutY="30.0" text="Manage Your All Book">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="346.0" layoutY="89.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" styleClass="round-button-black" text="Manage Book" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="53.0" layoutY="204.0" prefHeight="156.0" prefWidth="608.0" styleClass="sub_panes">
+               <children>
+                  <ImageView fitHeight="133.0" fitWidth="138.0" layoutX="424.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/img/icons8-add-book-50.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="33.0" layoutY="12.0" prefHeight="76.0" prefWidth="326.0" text="Add a book to your  collection" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="130.0" layoutY="98.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" styleClass="round-button-black" text="Book records" />
+               </children></AnchorPane>
+            <AnchorPane layoutX="53.0" layoutY="378.0" prefHeight="156.0" prefWidth="608.0" styleClass="sub_panes">
+               <children>
+                  <ImageView fitHeight="133.0" fitWidth="138.0" layoutX="40.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/img/writer_1722500.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="238.0" layoutY="14.0" prefHeight="76.0" prefWidth="326.0" text="Find your favorite author" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="323.0" layoutY="87.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" styleClass="round-button-black" text="Manage other" />
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

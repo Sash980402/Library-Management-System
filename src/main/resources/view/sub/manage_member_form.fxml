@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="564.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.sub.ManageMemberFormController">
+   <children>
+      <TextField fx:id="txtMemberid" layoutX="28.0" layoutY="41.0" onAction="#txtMemberidOnAction" prefHeight="26.0" prefWidth="167.0" promptText="Member ID" />
+      <TextField fx:id="txtMemberName" layoutX="28.0" layoutY="86.0" prefHeight="26.0" prefWidth="167.0" promptText="Member Name" />
+      <TextField fx:id="txtMemberAddress" layoutX="28.0" layoutY="135.0" prefHeight="26.0" prefWidth="167.0" promptText="Member Address" />
+      <TextField fx:id="txtMemberEmail" layoutX="28.0" layoutY="187.0" onAction="#txtMemberEmailOnAction" prefHeight="26.0" prefWidth="167.0" promptText="Member Email" />
+      <TextField fx:id="txtMemberContact" layoutX="28.0" layoutY="237.0" onAction="#txtMemberContactOnAction" prefHeight="26.0" prefWidth="167.0" promptText="Member Contact" />
+      <Button layoutX="50.0" layoutY="296.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save Customer" />
+      <Button layoutX="43.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update Customer" />
+      <Button layoutX="45.0" layoutY="408.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="Delete Customer" />
+      <Button layoutX="50.0" layoutY="468.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="26.0" prefWidth="95.0" text="Clear" />
+      <Label layoutX="31.0" layoutY="24.0" prefHeight="18.0" prefWidth="95.0" text="Member ID" />
+      <Label layoutX="28.0" layoutY="67.0" prefHeight="18.0" prefWidth="95.0" text="Member Name" />
+      <Label layoutX="31.0" layoutY="116.0" prefHeight="18.0" prefWidth="95.0" text="Member Address" />
+      <Label layoutX="31.0" layoutY="168.0" prefHeight="18.0" prefWidth="95.0" text="Member Email" />
+      <Label layoutX="28.0" layoutY="218.0" prefHeight="18.0" prefWidth="95.0" text="Member Contact" />
+      <TableView fx:id="tblMember" layoutX="200.0" layoutY="41.0" prefHeight="472.0" prefWidth="491.0">
+        <columns>
+          <TableColumn fx:id="colMemberid" prefWidth="75.0" text="Member ID" />
+          <TableColumn fx:id="colMemberName" prefWidth="94.4000244140625" text="Member Name" />
+            <TableColumn fx:id="colMemberAddress" prefWidth="120.79998779296875" text="Member Address" />
+            <TableColumn fx:id="colMemberEmail" prefWidth="90.4000244140625" text="Member Email" />
+            <TableColumn fx:id="colMemberContact" minWidth="7.20001220703125" prefWidth="107.99998779296874" text="Member Contact" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
