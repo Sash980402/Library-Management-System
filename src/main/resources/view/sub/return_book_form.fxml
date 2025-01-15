@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="564.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.sub.ReturnBookFormController">
+   <children>
+      <TableView layoutX="3.0" layoutY="94.0" prefHeight="200.0" prefWidth="690.0">
+        <columns>
+          <TableColumn prefWidth="94.4000244140625" text="Record ID" />
+          <TableColumn prefWidth="91.20001220703125" text="Book ID" />
+            <TableColumn prefWidth="135.20001220703125" text="Book Name" />
+            <TableColumn prefWidth="93.60003662109375" text="Member ID" />
+            <TableColumn prefWidth="137.60003662109375" text="Member Name" />
+            <TableColumn prefWidth="137.60003662109375" text="Return Date" />
+        </columns>
+      </TableView>
+      <TextField layoutX="14.0" layoutY="47.0" prefHeight="26.0" prefWidth="170.0" promptText="Enter KeyWord To Search" />
+      <RadioButton layoutX="196.0" layoutY="52.0" mnemonicParsing="false" text="Book ID">
+         <toggleGroup>
+            <ToggleGroup fx:id="test" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="284.0" layoutY="52.0" mnemonicParsing="false" text="Member ID" toggleGroup="$test" />
+      <RadioButton layoutX="389.0" layoutY="52.0" mnemonicParsing="false" text="Member Mobile Number" toggleGroup="$test" />
+      <Label layoutX="24.0" layoutY="320.0" prefHeight="26.0" prefWidth="110.0" text="Late Date Count" />
+      <Label fx:id="lblLateDateCount" layoutX="141.0" layoutY="320.0" prefHeight="26.0" prefWidth="64.0" />
+   </children>
+</AnchorPane>

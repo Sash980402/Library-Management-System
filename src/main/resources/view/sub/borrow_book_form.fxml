@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="564.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.sub.BorrowBookController">
+   <children>
+      <TextField fx:id="txtMemberid" layoutX="14.0" layoutY="26.0" onAction="#txtMemberidOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Member Id" />
+      <TextField fx:id="txtMemberName" editable="false" layoutX="139.0" layoutY="26.0" prefHeight="26.0" prefWidth="111.0" promptText="Member Name" />
+      <TextField fx:id="txtMemberAddress" editable="false" layoutX="265.0" layoutY="26.0" prefHeight="26.0" prefWidth="111.0" promptText="Member Address" />
+      <TextField fx:id="txtMemberContact" layoutX="391.0" layoutY="26.0" onAction="#txtMemberContactOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Member Contact" />
+      <TextField fx:id="txtMemberEmail" layoutX="531.0" layoutY="26.0" onAction="#txtMemberEmailOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Member Email" />
+      <TextField fx:id="txtBookid" layoutX="14.0" layoutY="74.0" onAction="#txtBookidOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Book id" />
+      <TextField fx:id="txtBookisbn" layoutX="139.0" layoutY="74.0" onAction="#txtBookisbnOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Book ISBN" />
+      <TextField fx:id="txtBookName" editable="false" layoutX="265.0" layoutY="74.0" prefHeight="26.0" prefWidth="111.0" promptText="Book Name" />
+      <TextField fx:id="txtMainCategory" editable="false" layoutX="391.0" layoutY="74.0" prefHeight="26.0" prefWidth="111.0" promptText="Main Category" />
+      <DatePicker fx:id="dpBorrowDate" layoutX="7.0" layoutY="131.0" prefHeight="26.0" prefWidth="136.0" promptText="Borrow Date" />
+      <DatePicker fx:id="dpReturnDate" layoutX="158.0" layoutY="131.0" prefHeight="26.0" prefWidth="136.0" promptText="Return Date" />
+      <Button layoutX="348.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnAddToCartOnAction" prefHeight="26.0" prefWidth="122.0" text="Add To Cart" />
+      <TableView fx:id="tblCart" layoutX="3.0" layoutY="170.0" prefHeight="290.0" prefWidth="690.0">
+        <columns>
+          <TableColumn fx:id="colBookId" prefWidth="135.20001220703125" text="Book id" />
+          <TableColumn fx:id="colBookName" minWidth="0.0" prefWidth="119.199951171875" text="Book Name" />
+            <TableColumn fx:id="colbookName" minWidth="0.0" prefWidth="126.4000244140625" text="Member Name" />
+            <TableColumn fx:id="colborrowDate" minWidth="0.0" prefWidth="150.39996337890625" text="Borrow Date" />
+            <TableColumn fx:id="colReturnDate" minWidth="0.0" prefWidth="157.5999755859375" text="Return Date" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnConfirmOnAction" layoutX="505.0" layoutY="485.0" mnemonicParsing="false" onAction="#btnConfirmOnAction" prefHeight="33.0" prefWidth="99.0" text="Confirm" />
+   </children>
+</AnchorPane>

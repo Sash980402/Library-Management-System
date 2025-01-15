@@ -20,6 +20,10 @@ public class ManageBookFormController {
     public TableColumn colBookName;
     public TableColumn colBookisbn;
     public TableColumn colBookPrice;
+    public TableView tblBook;
+    public TableView tblAuthors;
+    public TableColumn colAuthorName;
+    public TableColumn colAuthorOption;
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
     }
@@ -31,5 +35,8 @@ public class ManageBookFormController {
     }
 
     public void btnClearOnAction(ActionEvent actionEvent) {
+    }
+
+    public void bookidOnAction(ActionEvent actionEvent) {
     }
 }

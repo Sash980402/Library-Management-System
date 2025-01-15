@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS library_project;
+
 CREATE DATABASE IF EXISTS library_project;
 
 CREATE TABLE member(
