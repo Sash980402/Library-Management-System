@@ -13,15 +13,22 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>23</version>
+            <version>19</version>
         </dependency>
+
+
+
+
+
 
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-controls -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>23</version>
+            <version>19</version>
         </dependency>
+
+
 
 
     </dependencies>
