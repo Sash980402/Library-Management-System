@@ -51,18 +51,18 @@
                         <Image url="@../assets/img/lock.png" />
                      </image>
                   </ImageView>
-                  <TextField cache="true" layoutX="105.0" layoutY="200.0" prefHeight="34.0" prefWidth="273.0" promptText="username" styleClass="round-corner" />
-                  <PasswordField layoutX="107.0" layoutY="277.0" prefHeight="34.0" prefWidth="274.0" promptText="password" styleClass="round-corner" />
-                  <TextField layoutX="108.0" layoutY="276.0" prefHeight="34.0" prefWidth="274.0" promptText="password" styleClass="round-corner" />
-                  <Button layoutX="393.0" layoutY="281.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="50.0" text="V/H" />
-                  <Button layoutX="172.0" layoutY="360.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="119.0" styleClass="round-button-black" text="LOGIN">
+                  <TextField fx:id="txtUserName" cache="true" layoutX="105.0" layoutY="200.0" prefHeight="34.0" prefWidth="273.0" promptText="username" styleClass="round-corner" />
+                  <PasswordField fx:id="pwfPassword" layoutX="107.0" layoutY="277.0" prefHeight="34.0" prefWidth="274.0" promptText="password" styleClass="round-corner" />
+                  <TextField fx:id="txtPassword" layoutX="108.0" layoutY="276.0" prefHeight="34.0" prefWidth="274.0" promptText="password" styleClass="round-corner" visible="false" />
+                  <Button layoutX="393.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnViewAndHideOnAction" prefHeight="14.0" prefWidth="50.0" text="V/H" />
+                  <Button layoutX="172.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="42.0" prefWidth="119.0" styleClass="round-button-black" text="LOGIN">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="2.0" layoutX="5.0" layoutY="461.0" stroke="BLACK" strokeType="INSIDE" width="166.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="2.0" layoutX="296.0" layoutY="460.0" stroke="BLACK" strokeType="INSIDE" width="193.0" />
-                  <Button layoutX="166.0" layoutY="449.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" styleClass="round-button-black" text="Create an account" />
+                  <Button layoutX="166.0" layoutY="449.0" mnemonicParsing="false" onAction="#btnCreateAnAccountOnAction" prefHeight="26.0" prefWidth="130.0" styleClass="round-button-black" text="Create an account" />
                   <Hyperlink layoutX="107.0" layoutY="325.0" prefHeight="24.0" prefWidth="130.0" text="forget password" />
                </children>
             </AnchorPane>
