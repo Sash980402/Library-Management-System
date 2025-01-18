@@ -8,10 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="506.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.RegisterFormSubController">
+<AnchorPane fx:id="signupMainPane" prefHeight="506.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.RegisterFormSubController">
    <children>
-      <Label fx:id="signupMainPane" alignment="CENTER" layoutX="160.0" layoutY="14.0" prefHeight="51.0" prefWidth="166.0" text="SIGN UP">
+      <Label alignment="CENTER" layoutX="160.0" layoutY="14.0" prefHeight="51.0" prefWidth="166.0" text="SIGN UP">
          <font>
             <Font name="Arial Black" size="28.0" />
          </font>
@@ -40,6 +39,6 @@
             <Image url="@../assets/img/hide.png" />
          </image>
       </ImageView>
-      <Button layoutX="193.0" layoutY="356.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="92.0" styleClass="round-button-black" stylesheets="@../style/login_form_style.css" text="SIGN UP" />
+      <Button layoutX="193.0" layoutY="356.0" mnemonicParsing="false" onAction="#btnSignUpOnAction" prefHeight="35.0" prefWidth="92.0" styleClass="round-button-black" stylesheets="@../style/login_form_style.css" text="SIGN UP" />
    </children>
 </AnchorPane>

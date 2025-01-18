@@ -11,18 +11,19 @@
    <children>
       <AnchorPane fx:id="mainbuttonpane" prefHeight="591.0" prefWidth="226.0">
          <children>
-            <Button layoutX="62.0" layoutY="195.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" styleClass="side-corner-round-button-black" text="Button" />
-            <Button layoutX="62.0" layoutY="264.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" styleClass="side-corner-round-button-black" text="Button" />
-            <Button layoutX="62.0" layoutY="338.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" styleClass="side-corner-round-button-black" text="Button" />
-            <Button layoutX="62.0" layoutY="411.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" styleClass="side-corner-round-button-black" text="Button" />
+            <Button layoutX="40.0" layoutY="195.0" mnemonicParsing="false" onAction="#btnManageMembersOnAction" prefHeight="38.0" prefWidth="188.0" styleClass="side-corner-round-button-black" text="Manage Members" />
+            <Button layoutX="40.0" layoutY="264.0" mnemonicParsing="false" onAction="#btnManageBooksOnAction" prefHeight="38.0" prefWidth="188.0" styleClass="side-corner-round-button-black" text="Manage Books" />
+            <Button layoutX="40.0" layoutY="338.0" mnemonicParsing="false" onAction="#btnManageAuthorAndPublisherOnAction" prefHeight="38.0" prefWidth="188.0" styleClass="side-corner-round-button-black" text="Manage Authors And Publisher " />
+            <Button layoutX="40.0" layoutY="411.0" mnemonicParsing="false" onAction="#btnBorrowBookRecordOnAction" prefHeight="38.0" prefWidth="188.0" styleClass="side-corner-round-button-black" text="Borrow  Book Record" />
             <ImageView fitHeight="103.0" fitWidth="109.0" layoutX="63.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/img/boy.png" />
                </image>
             </ImageView>
+            <Button layoutX="40.0" layoutY="475.0" mnemonicParsing="false" onAction="#btnReturnBookRecordOnAction" prefHeight="38.0" prefWidth="188.0" styleClass="side-corner-round-button-black" text="Retuen Book Record" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="237.0" layoutY="21.0" prefHeight="564.0" prefWidth="696.0">
+      <AnchorPane fx:id="MainPane" layoutX="237.0" layoutY="21.0" prefHeight="564.0" prefWidth="696.0">
          <children>
             <AnchorPane layoutX="53.0" layoutY="29.0" prefHeight="156.0" prefWidth="608.0" styleClass="sub_panes">
                <children>
