@@ -1,5 +1,7 @@
 
-CREATE DATABASE IF EXISTS library_project;
+CREATE DATABASE IF NOT  EXISTS library_project;
+
+use library_project;
 
 CREATE TABLE member(
     id VARCHAR(6) PRIMARY KEY,
