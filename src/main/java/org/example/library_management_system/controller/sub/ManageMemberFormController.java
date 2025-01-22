@@ -1,11 +1,18 @@
 package org.example.library_management_system.controller.sub;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.library_management_system.dto.MemberDTO;
+import org.example.library_management_system.entity.Member;
 import org.example.library_management_system.service.MemberService;
+import org.example.library_management_system.tm.MemberTm;
 import org.example.library_management_system.util.exceptions.MemberException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class ManageMemberFormController {
@@ -14,14 +21,27 @@ public class ManageMemberFormController {
     public TextField txtMemberAddress;
     public TextField txtMemberEmail;
     public TextField txtMemberContact;
-    public TableView tblMember;
-    public TableColumn colMemberid;
-    public TableColumn colMemberName;
-    public TableColumn colMemberAddress;
-    public TableColumn colMemberEmail;
-    public TableColumn colMemberContact;
+    public TableView<MemberTm> tblMember;
+    public TableColumn<MemberTm,String> colMemberid;
+    public TableColumn<MemberTm,String> colMemberName;
+    public TableColumn<MemberTm,String> colMemberAddress;
+    public TableColumn<MemberTm,String> colMemberEmail;
+    public TableColumn<MemberTm,String> colMemberContact;
 
     private final MemberService service = new MemberService();
+
+    public void initialize(){
+        loadTableData();
+        visualizeTable();
+    }
+
+    private void visualizeTable() {
+        colMemberid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colMemberName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colMemberAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colMemberEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colMemberContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+    }
 
 
     public void txtMemberidOnAction(ActionEvent actionEvent) {
@@ -34,9 +54,11 @@ public class ManageMemberFormController {
     }
 
     public void txtMemberEmailOnAction(ActionEvent actionEvent) {
+
     }
 
     public void txtMemberContactOnAction(ActionEvent actionEvent) {
+
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
@@ -105,6 +127,21 @@ public class ManageMemberFormController {
 
     }
 
+    public void loadTableData(){
+        try {
+            List<MemberTm> list= new ArrayList<>();
+            List<MemberDTO> all = service.getAll();
+            for (MemberDTO memberDTO : all) {
+                MemberTm memberTm = convertMemberDtoToTm(memberDTO);
+                list.add(memberTm);
+            }
+            ObservableList<MemberTm> memberTms = FXCollections.observableArrayList(list);
+            tblMember.setItems(memberTms);
+        } catch (MemberException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     public void btnClearOnAction(ActionEvent actionEvent) {
@@ -135,5 +172,15 @@ public class ManageMemberFormController {
         txtMemberAddress.clear();
         txtMemberEmail.clear();
         txtMemberContact.clear();
+    }
+
+    private MemberTm convertMemberDtoToTm(MemberDTO memberDTO) {
+       MemberTm memberTm = new MemberTm();
+       memberTm.setId(memberDTO.getId());
+       memberTm.setName(memberDTO.getName());
+       memberTm.setAddress(memberDTO.getAddress());
+       memberTm.setEmail(memberDTO.getEmail());
+       memberTm.setContact(memberDTO.getMobileNumber());
+       return memberTm;
     }
 }

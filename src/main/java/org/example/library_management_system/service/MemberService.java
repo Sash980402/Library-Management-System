@@ -7,6 +7,8 @@ import org.example.library_management_system.repo.MemberRepo;
 import org.example.library_management_system.util.exceptions.MemberException;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
@@ -78,6 +80,25 @@ public Optional<MemberDTO> search(String id){
     }
     return Optional.empty();
 }
+
+public List<MemberDTO> getAll() throws MemberException {
+    try {
+        List<Member> all = memberRepo.getAll();
+        if (all.isEmpty()){
+            throw new MemberException("No Member Found");
+        }
+        List<MemberDTO> memberDTOS = new ArrayList<>();
+        for (Member member : all) {
+            MemberDTO memberDTO = covnertEntityToDTO(member);
+            memberDTOS.add(memberDTO);
+         }
+        return memberDTOS;
+    } catch (SQLException | ClassNotFoundException e) {
+        throw new MemberException("Contact Develloper", e);
+    }
+
+}
+
 
    private Member covnertDTOtoEntity(MemberDTO memberDTO) {
        Member member = new Member();
