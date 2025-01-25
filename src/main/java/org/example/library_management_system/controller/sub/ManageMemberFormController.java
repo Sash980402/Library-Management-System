@@ -175,12 +175,12 @@ public class ManageMemberFormController {
     }
 
     private MemberTm convertMemberDtoToTm(MemberDTO memberDTO) {
-       MemberTm memberTm = new MemberTm();
-       memberTm.setId(memberDTO.getId());
-       memberTm.setName(memberDTO.getName());
-       memberTm.setAddress(memberDTO.getAddress());
-       memberTm.setEmail(memberDTO.getEmail());
-       memberTm.setContact(memberDTO.getMobileNumber());
-       return memberTm;
+        MemberTm memberTm = new MemberTm();
+        memberTm.setId(memberDTO.getId());
+        memberTm.setName(memberDTO.getName());
+        memberTm.setAddress(memberDTO.getAddress());
+        memberTm.setEmail(memberDTO.getEmail());
+        memberTm.setContact(memberDTO.getMobileNumber());
+        return memberTm;
     }
 }

@@ -1,6 +1,7 @@
-package org.example.library_management_system.repo;
+package org.example.library_management_system.repo.custom.impl;
 
 import org.example.library_management_system.entity.Member;
+import org.example.library_management_system.repo.custom.MemberRepo;
 import org.example.library_management_system.util.DBConnection;
 
 import java.sql.Connection;
@@ -11,8 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MemberRepo {
+public class MemberRepoIMPL  implements MemberRepo {
 
+    @Override
     public boolean save(Member member) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement ps = connection.prepareStatement("INSERT INTO member(id,name,address,email,contact) VALUES(?,?,?,?,?) ");
@@ -25,6 +27,7 @@ public class MemberRepo {
         return affectedRows > 0;
     }
 
+    @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement ps = connection.prepareStatement("DELETE FROM member WHERE id=?");
@@ -33,6 +36,7 @@ public class MemberRepo {
         return affectedRows > 0;
     }
 
+    @Override
     public boolean update(Member member) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement ps = connection.prepareStatement("UPDATE member SET name=?,address=?,email=?,contact=? WHERE id=?");
@@ -43,8 +47,8 @@ public class MemberRepo {
         ps.setString(5, member.getId());
         return ps.executeUpdate() > 0;
     }
-
-    public Optional<Member> searchMember(String memberId) throws SQLException, ClassNotFoundException {
+    @Override
+    public Optional<Member> search(String memberId) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM member WHERE id=?");
         ps.setString(1, memberId);
@@ -61,6 +65,7 @@ public class MemberRepo {
         return Optional.empty();
     }
 
+    @Override
     public List<Member> getAll() throws SQLException, ClassNotFoundException {
         Connection connection= DBConnection.getInstance().getConnection();
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM member");
