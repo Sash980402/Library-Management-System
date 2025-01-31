@@ -1,6 +1,6 @@
 package org.example.library_management_system.repo.custom.impl;
 
-import org.example.library_management_system.entity.Author;
+import org.example.library_management_system.entity.custom.Author;
 import org.example.library_management_system.repo.custom.AuthorRepo;
 import org.example.library_management_system.util.CrudUtil;
 

@@ -1,6 +1,8 @@
-package org.example.library_management_system.util.exceptions;
+package org.example.library_management_system.util.exceptions.custom;
 
-public class MemberException extends Exception {
+import org.example.library_management_system.util.exceptions.ServiceExeption;
+
+public class MemberException extends ServiceExeption {
     public MemberException() {
     }
 

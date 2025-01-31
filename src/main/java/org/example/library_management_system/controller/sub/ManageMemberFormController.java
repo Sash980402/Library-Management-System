@@ -5,11 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.example.library_management_system.dto.MemberDTO;
-import org.example.library_management_system.entity.Member;
-import org.example.library_management_system.service.MemberService;
+import org.example.library_management_system.dto.custom.MemberDTO;
+import org.example.library_management_system.service.custom.impl.MemberServiceIMPL;
 import org.example.library_management_system.tm.MemberTm;
-import org.example.library_management_system.util.exceptions.MemberException;
+import org.example.library_management_system.util.exceptions.custom.MemberException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,7 @@ public class ManageMemberFormController {
     public TableColumn<MemberTm,String> colMemberEmail;
     public TableColumn<MemberTm,String> colMemberContact;
 
-    private final MemberService service = new MemberService();
+    private final MemberServiceIMPL service = new MemberServiceIMPL();
 
     public void initialize(){
         loadTableData();
@@ -45,7 +44,13 @@ public class ManageMemberFormController {
 
 
     public void txtMemberidOnAction(ActionEvent actionEvent) {
-        Optional<MemberDTO> search = service.search(txtMemberid.getText());
+        Optional<MemberDTO> search = null;
+        try {
+            search = service.search(txtMemberid.getText());
+        } catch (MemberException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage());
+            return;
+        }
         if (search.isPresent()){
             setDataToFields(search.get());
         }else {
@@ -66,7 +71,7 @@ public class ManageMemberFormController {
         boolean isMemberSaved = false;
         String errorMassage = "Unexpected Error";
         try {
-            isMemberSaved = service.addMember(memberDTO);
+            isMemberSaved = service.add(memberDTO);
         } catch (MemberException e) {
             errorMassage = e.getMessage();
         }

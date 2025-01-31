@@ -1,6 +1,6 @@
 package org.example.library_management_system.repo.custom.impl;
 
-import org.example.library_management_system.entity.Category;
+import org.example.library_management_system.entity.custom.Category;
 import org.example.library_management_system.repo.custom.CategoryRepo;
 import org.example.library_management_system.util.CrudUtil;
 

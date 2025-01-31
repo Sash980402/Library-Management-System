@@ -1,6 +1,8 @@
-package org.example.library_management_system.entity;
+package org.example.library_management_system.entity.custom;
 
-public class Category {
+import org.example.library_management_system.entity.SuperEntity;
+
+public class Category implements SuperEntity {
     private int id;
     private String name;
 

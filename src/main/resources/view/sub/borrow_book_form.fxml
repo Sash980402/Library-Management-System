@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="564.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.sub.BorrowBookController">
@@ -13,7 +14,10 @@
       <TextField fx:id="txtMemberName" editable="false" layoutX="139.0" layoutY="26.0" prefHeight="26.0" prefWidth="111.0" promptText="Member Name" />
       <TextField fx:id="txtMemberAddress" editable="false" layoutX="265.0" layoutY="26.0" prefHeight="26.0" prefWidth="111.0" promptText="Member Address" />
       <TextField fx:id="txtMemberContact" layoutX="391.0" layoutY="26.0" onAction="#txtMemberContactOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Member Contact" />
-      <TextField fx:id="txtMemberEmail" layoutX="531.0" layoutY="26.0" onAction="#txtMemberEmailOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Member Email" />
+      <TextField fx:id="txtMemberEmail" layoutX="531.0" layoutY="26.0" onAction="#txtMemberEmailOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Member Email">
+         <tooltip>
+            <Tooltip text="Member Email" />
+         </tooltip></TextField>
       <TextField fx:id="txtBookid" layoutX="14.0" layoutY="74.0" onAction="#txtBookidOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Book id" />
       <TextField fx:id="txtBookisbn" layoutX="139.0" layoutY="74.0" onAction="#txtBookisbnOnAction" prefHeight="26.0" prefWidth="111.0" promptText="Book ISBN" />
       <TextField fx:id="txtBookName" editable="false" layoutX="265.0" layoutY="74.0" prefHeight="26.0" prefWidth="111.0" promptText="Book Name" />

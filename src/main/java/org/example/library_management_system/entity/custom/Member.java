@@ -1,6 +1,8 @@
-package org.example.library_management_system.entity;
+package org.example.library_management_system.entity.custom;
 
-public class Member {
+import org.example.library_management_system.entity.SuperEntity;
+
+public class Member implements SuperEntity {
     private String id;
     private String name;
     private String address;

@@ -1,6 +1,6 @@
 package org.example.library_management_system.repo.custom.impl;
 
-import org.example.library_management_system.entity.Member;
+import org.example.library_management_system.entity.custom.Member;
 import org.example.library_management_system.repo.custom.MemberRepo;
 import org.example.library_management_system.util.DBConnection;
 

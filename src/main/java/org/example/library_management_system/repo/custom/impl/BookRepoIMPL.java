@@ -1,12 +1,9 @@
 package org.example.library_management_system.repo.custom.impl;
 
-import org.example.library_management_system.entity.Book;
+import org.example.library_management_system.entity.custom.Book;
 import org.example.library_management_system.repo.custom.BookRepo;
 import org.example.library_management_system.util.CrudUtil;
-import org.example.library_management_system.util.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

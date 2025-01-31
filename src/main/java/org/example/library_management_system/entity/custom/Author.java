@@ -1,18 +1,18 @@
-package org.example.library_management_system.entity;
+package org.example.library_management_system.entity.custom;
 
-public class Publisher {
+import org.example.library_management_system.entity.SuperEntity;
+
+public class Author implements SuperEntity {
     private int id;
     private String name;
-    private String location;
     private String contact;
 
-    public Publisher() {
+    public Author() {
     }
 
-    public Publisher(int id, String name, String location, String contact) {
+    public Author(int id, String name, String contact) {
         this.id = id;
         this.name = name;
-        this.location = location;
         this.contact = contact;
     }
 
@@ -30,14 +30,6 @@ public class Publisher {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public String getContact() {
