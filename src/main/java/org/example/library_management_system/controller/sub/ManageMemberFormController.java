@@ -77,6 +77,7 @@ public class ManageMemberFormController {
         }
         if (isMemberSaved){
             new Alert(Alert.AlertType.INFORMATION,"Member saved successfully").show();
+            loadTableData();
             clearFields();
         }else{
             new Alert(Alert.AlertType.ERROR,errorMassage).show();
@@ -96,6 +97,7 @@ public class ManageMemberFormController {
         if (isUpdated){
             new Alert(Alert.AlertType.INFORMATION,"Member updated successfully").show();
             clearFields();
+            loadTableData();
         }else{
             new Alert(Alert.AlertType.ERROR,errorMassage).show();
         }
@@ -126,6 +128,7 @@ public class ManageMemberFormController {
 
         if (delete){
             new Alert(Alert.AlertType.INFORMATION,"Member deleted successfully").show();
+            loadTableData();
         }else{
             new Alert(Alert.AlertType.ERROR,errorMassage).show();
         }

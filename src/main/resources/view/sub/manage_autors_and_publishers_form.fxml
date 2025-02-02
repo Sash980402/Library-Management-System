@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="564.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.sub.ManageAuthorAndPublishersController">
    <children>
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="534.0" prefWidth="311.0">
@@ -19,7 +18,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtPublisherid" layoutX="35.0" layoutY="68.0" prefHeight="26.0" prefWidth="230.0" promptText="Publisher Id" />
+            <TextField fx:id="txtPublisherid" layoutX="35.0" layoutY="68.0" onAction="#txtPublisheridOnAction" prefHeight="26.0" prefWidth="230.0" promptText="Publisher Id" />
             <TextField fx:id="txtPublisherName" layoutX="35.0" layoutY="102.0" prefHeight="26.0" prefWidth="230.0" promptText="Publisher Name" />
             <TextField fx:id="txtPublisherLocation" layoutX="35.0" layoutY="137.0" prefHeight="26.0" prefWidth="230.0" promptText="Publisher Location" />
             <TextField fx:id="txtPublisherContact" layoutX="35.0" layoutY="172.0" prefHeight="26.0" prefWidth="230.0" promptText="Publisher Contact" />
