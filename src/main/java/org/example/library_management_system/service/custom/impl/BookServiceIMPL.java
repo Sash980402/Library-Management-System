@@ -7,6 +7,7 @@ import org.example.library_management_system.repo.custom.BookRepo;
 import org.example.library_management_system.repo.custom.impl.BookRepoIMPL;
 import org.example.library_management_system.service.custom.BookService;
 import org.example.library_management_system.util.exceptions.custom.BookException;
+import org.modelmapper.ModelMapper;
 
 
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class BookServiceIMPL implements BookService {
-
+    private final ModelMapper mapper = new ModelMapper();
     private final BookRepo repo = new BookRepoIMPL();
 
     @Override
@@ -95,27 +96,13 @@ public class BookServiceIMPL implements BookService {
     }
 
     private Book convertDtoToEntity(BookDTO dto){
-        Book book= new Book();
-        book.setId(dto.getId());
-        book.setName(dto.getName());
-        book.setAuthor(dto.getAuthor());
-        book.setIsbn(dto.getIsbn());
-        book.setPrice(dto.getPrice());
-        book.setMainCategoryId(dto.getMainCategoryId());
-        book.setPublisherId(dto.getPublisherId());
-        return book;
+        return mapper.map(dto, Book.class);
+
     }
 
 
     public BookDTO convertEntityToDto(Book book){
-        BookDTO dto= new BookDTO();
-        dto.setId(book.getId());
-        dto.setName(book.getName());
-        dto.setAuthor(book.getAuthor());
-        dto.setIsbn(book.getIsbn());
-        dto.setPrice(book.getPrice());
-        dto.setMainCategoryId(book.getMainCategoryId());
-        dto.setPublisherId(book.getPublisherId());
-        return dto;
+        return mapper.map(book, BookDTO.class);
+
     }
 }

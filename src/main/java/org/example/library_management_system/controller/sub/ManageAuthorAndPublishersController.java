@@ -1,13 +1,20 @@
 package org.example.library_management_system.controller.sub;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.library_management_system.dto.custom.PublisherDTO;
 import org.example.library_management_system.service.custom.PublisherService;
 import org.example.library_management_system.service.custom.impl.PublisherServiceIMPL;
+import org.example.library_management_system.tm.PublisherTM;
 import org.example.library_management_system.util.exceptions.ServiceExeption;
 import org.example.library_management_system.util.exceptions.custom.PublisherException;
+import org.modelmapper.ModelMapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class ManageAuthorAndPublishersController {
@@ -15,10 +22,10 @@ public class ManageAuthorAndPublishersController {
     public TextField txtPublisherName;
     public TextField txtPublisherLocation;
     public TextField txtPublisherContact;
-    public TableView tblPublishers;
-    public TableColumn colPublisherId;
-    public TableColumn colPublisherName;
-    public TableColumn colPublisherContact;
+    public TableView<PublisherTM> tblPublishers;
+    public TableColumn<PublisherTM,Integer> colPublisherId;
+    public TableColumn<PublisherTM,String> colPublisherName;
+    public TableColumn<PublisherTM,String> colPublisherContact;
     public TextField txtAuthorId;
     public TextField txtAuthorName;
     public TextField txtAuthorContact;
@@ -27,7 +34,18 @@ public class ManageAuthorAndPublishersController {
     public TableColumn colAuthorName;
     public TableColumn colAuthorContact;
 
-    private PublisherService publisherService = new PublisherServiceIMPL();
+    private final PublisherService publisherService = new PublisherServiceIMPL();
+    private final ModelMapper modelMapper = new ModelMapper();
+
+    public void initialize() {
+        txtPublisherid.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                txtPublisherid.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+
+    }
 
     public void btnSavePublisheronAction(ActionEvent actionEvent) {
         PublisherDTO publisherDTO = collectData();
@@ -35,6 +53,7 @@ public class ManageAuthorAndPublishersController {
             boolean isSaved = publisherService.add(publisherDTO);
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Saved Success").show();
+                clearPublisherFields();
             }else {
                 new Alert(Alert.AlertType.ERROR, "Something went wrong").show();
             }
@@ -46,12 +65,56 @@ public class ManageAuthorAndPublishersController {
     }
 
     public void btnUpdatePublisherOnAction(ActionEvent actionEvent) {
+        PublisherDTO publisherDTO = collectData();
+        try {
+            boolean update = publisherService.update(publisherDTO);
+            if (update) {
+                new Alert(Alert.AlertType.INFORMATION, "Updated Success").show();
+                clearPublisherFields();
+            }else {
+                new Alert(Alert.AlertType.ERROR, "Not Updated").show();
+            }
+        } catch (ServiceExeption e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     public void btnDeletePublisherOnAction(ActionEvent actionEvent) {
+        PublisherDTO publisherDTO = collectData();
+        if (publisherDTO.getId() == 0){
+            new Alert(Alert.AlertType.ERROR, "Invalid Publisher ID- Please Enter valid ID").show();
+            return;
+        }
+
+        Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this publisher?", ButtonType.YES, ButtonType.NO).showAndWait();
+        if (buttonType.isPresent()){
+            if (buttonType.get().equals(ButtonType.YES)){
+                try {
+                    boolean delete = publisherService.delete(publisherDTO.getId());
+                    if (delete) {
+                        new Alert(Alert.AlertType.INFORMATION, "Deleted Success").show();
+                    }else {
+                        new Alert(Alert.AlertType.ERROR, "Not Delete").show();
+                    }
+                } catch (ServiceExeption e) {
+                    e.printStackTrace();
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }
+        }
+
+
+    }
+
+    private void clearPublisherFields() {
+        txtPublisherid.clear();
+        txtPublisherName.clear();
+        txtPublisherLocation.clear();
+        txtPublisherContact.clear();
     }
 
     public void btnClearPublisherOnAction(ActionEvent actionEvent) {
+        clearPublisherFields();
     }
 
     public void btnSaveAuthoronAction(ActionEvent actionEvent) {
@@ -76,7 +139,7 @@ public class ManageAuthorAndPublishersController {
         try{
            idnum= Integer.parseInt(id);
         }catch (NumberFormatException e){
-            e.printStackTrace();
+           //e.printStackTrace();
         }
 
         PublisherDTO publisherDTO = new PublisherDTO();
@@ -108,5 +171,27 @@ public class ManageAuthorAndPublishersController {
         txtPublisherName.setText(publisherDTO.getName());
         txtPublisherContact.setText(publisherDTO.getContact());
         txtPublisherLocation.setText(publisherDTO.getLocation());
+    }
+
+    public void loadTabledate(){
+        try {
+            List<PublisherDTO> all = publisherService.getAll();
+            List<PublisherTM> list = new ArrayList<>();
+            for (PublisherDTO publisherDTO : all) {
+                list.add(convertDtoToTM(publisherDTO));
+            }
+        } catch (ServiceExeption e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void visualizeData(){
+        colPublisherId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colPublisherName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colPublisherContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+    }
+
+    private PublisherTM convertDtoToTM(PublisherDTO obj) {
+          return modelMapper.map(obj, PublisherTM.class);
     }
 }
