@@ -2,12 +2,18 @@ package org.example.library_management_system.controller.sub;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.library_management_system.dto.custom.PublisherDTO;
+import org.example.library_management_system.repo.custom.PublisherRepo;
+import org.example.library_management_system.repo.util.RepoFactory;
+import org.example.library_management_system.repo.util.RepoTypes;
 import org.example.library_management_system.service.custom.PublisherService;
 import org.example.library_management_system.service.custom.impl.PublisherServiceIMPL;
+import org.example.library_management_system.service.util.ServiceFactory;
+import org.example.library_management_system.service.util.ServiceType;
 import org.example.library_management_system.tm.PublisherTM;
 import org.example.library_management_system.util.exceptions.ServiceExeption;
 import org.example.library_management_system.util.exceptions.custom.PublisherException;
@@ -34,7 +40,7 @@ public class ManageAuthorAndPublishersController {
     public TableColumn colAuthorName;
     public TableColumn colAuthorContact;
 
-    private final PublisherService publisherService = new PublisherServiceIMPL();
+    private final PublisherService publisherService =(PublisherService) ServiceFactory.getInstance().getService(ServiceType.PUBLISHER_SERVICE);
     private final ModelMapper modelMapper = new ModelMapper();
 
     public void initialize() {
@@ -43,8 +49,8 @@ public class ManageAuthorAndPublishersController {
                 txtPublisherid.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
-
-
+        visualizeData();
+        loadTabledate();
     }
 
     public void btnSavePublisheronAction(ActionEvent actionEvent) {
@@ -54,6 +60,7 @@ public class ManageAuthorAndPublishersController {
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Saved Success").show();
                 clearPublisherFields();
+                loadTabledate();
             }else {
                 new Alert(Alert.AlertType.ERROR, "Something went wrong").show();
             }
@@ -71,6 +78,7 @@ public class ManageAuthorAndPublishersController {
             if (update) {
                 new Alert(Alert.AlertType.INFORMATION, "Updated Success").show();
                 clearPublisherFields();
+                loadTabledate();
             }else {
                 new Alert(Alert.AlertType.ERROR, "Not Updated").show();
             }
@@ -93,6 +101,7 @@ public class ManageAuthorAndPublishersController {
                     boolean delete = publisherService.delete(publisherDTO.getId());
                     if (delete) {
                         new Alert(Alert.AlertType.INFORMATION, "Deleted Success").show();
+                        loadTabledate();
                     }else {
                         new Alert(Alert.AlertType.ERROR, "Not Delete").show();
                     }
@@ -180,6 +189,7 @@ public class ManageAuthorAndPublishersController {
             for (PublisherDTO publisherDTO : all) {
                 list.add(convertDtoToTM(publisherDTO));
             }
+            tblPublishers.setItems(FXCollections.observableArrayList(list));
         } catch (ServiceExeption e) {
             e.printStackTrace();
         }

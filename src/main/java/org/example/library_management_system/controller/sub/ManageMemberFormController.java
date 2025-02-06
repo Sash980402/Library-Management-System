@@ -6,7 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.library_management_system.dto.custom.MemberDTO;
+import org.example.library_management_system.repo.custom.MemberRepo;
+import org.example.library_management_system.repo.util.RepoFactory;
+import org.example.library_management_system.repo.util.RepoTypes;
+import org.example.library_management_system.service.custom.MemberService;
 import org.example.library_management_system.service.custom.impl.MemberServiceIMPL;
+import org.example.library_management_system.service.util.ServiceFactory;
+import org.example.library_management_system.service.util.ServiceType;
 import org.example.library_management_system.tm.MemberTm;
 import org.example.library_management_system.util.exceptions.custom.MemberException;
 
@@ -27,7 +33,7 @@ public class ManageMemberFormController {
     public TableColumn<MemberTm,String> colMemberEmail;
     public TableColumn<MemberTm,String> colMemberContact;
 
-    private final MemberServiceIMPL service = new MemberServiceIMPL();
+    private final MemberServiceIMPL service =(MemberServiceIMPL) ServiceFactory.getInstance().getService(ServiceType.MEMBER_SERVICE);
 
     public void initialize(){
         loadTableData();

@@ -7,7 +7,7 @@ import org.example.library_management_system.util.exceptions.ServiceExeption;
 import java.util.List;
 import java.util.Optional;
 
-public interface CrudService <T extends SuperDTO,ID> {
+public interface CrudService <T extends SuperDTO,ID> extends SuperService{
     boolean add(T t) throws ServiceExeption;
 
     boolean update(T t) throws ServiceExeption;

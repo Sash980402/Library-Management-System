@@ -5,8 +5,15 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import org.example.library_management_system.repo.custom.BookRepo;
+import org.example.library_management_system.repo.util.RepoFactory;
+import org.example.library_management_system.repo.util.RepoTypes;
 import org.example.library_management_system.service.custom.BookService;
 import org.example.library_management_system.service.custom.impl.BookServiceIMPL;
+import org.example.library_management_system.service.util.OtherDependancies;
+import org.example.library_management_system.service.util.ServiceFactory;
+import org.example.library_management_system.service.util.ServiceType;
+import org.modelmapper.ModelMapper;
 
 public class ManageBookFormController {
     public TextField txtBookid;
@@ -27,7 +34,8 @@ public class ManageBookFormController {
     public TableColumn colAuthorName;
     public TableColumn colAuthorOption;
 
-    private final BookService service= new BookServiceIMPL();
+
+    private final BookService service=(BookService) ServiceFactory.getInstance().getService(ServiceType.BOOK_SERVICE);
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
     }

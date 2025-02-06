@@ -16,8 +16,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class BookServiceIMPL implements BookService {
-    private final ModelMapper mapper = new ModelMapper();
-    private final BookRepo repo = new BookRepoIMPL();
+    private final ModelMapper mapper ;
+    private final BookRepo repo ;
+
+    public BookServiceIMPL(ModelMapper mapper, BookRepo repo) {
+        this.mapper = mapper;
+        this.repo = repo;
+    }
+
 
     @Override
     public boolean add(BookDTO bookDTO) throws BookException {

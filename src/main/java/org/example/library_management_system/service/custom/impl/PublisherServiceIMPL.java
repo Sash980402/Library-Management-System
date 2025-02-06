@@ -8,6 +8,7 @@ import org.example.library_management_system.service.custom.PublisherService;
 import org.example.library_management_system.util.exceptions.ServiceExeption;
 import org.example.library_management_system.util.exceptions.custom.BookException;
 import org.example.library_management_system.util.exceptions.custom.PublisherException;
+import org.modelmapper.ModelMapper;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,13 @@ import java.util.Optional;
 
 public class PublisherServiceIMPL implements PublisherService {
 
-    private PublisherRepo repo = new PublisherRepoIMPL();
+    private final PublisherRepo repo;
+    private final ModelMapper mapper;
+
+    public PublisherServiceIMPL(ModelMapper mapper,PublisherRepo repo) {
+        this.repo = repo;
+        this.mapper = mapper;
+    }
 
     @Override
     public boolean add(PublisherDTO publisherDTO) throws PublisherException {
@@ -92,20 +99,10 @@ public class PublisherServiceIMPL implements PublisherService {
     }
 
     private PublisherDTO convertToDTO(Publisher publisher){
-       PublisherDTO publisherDTO= new PublisherDTO();
-       publisherDTO.setId(publisher.getId());
-       publisherDTO.setName(publisher.getName());
-       publisherDTO.setLocation(publisher.getLocation());
-       publisherDTO.setContact(publisher.getContact());
-       return publisherDTO;
+       return mapper.map(publisher, PublisherDTO.class);
     }
 
     private Publisher convertToEntity(PublisherDTO publisherDTO){
-        Publisher publisher = new Publisher();
-        publisher.setId(publisherDTO.getId());
-        publisher.setName(publisherDTO.getName());
-        publisher.setLocation(publisherDTO.getLocation());
-        publisher.setContact(publisherDTO.getContact());
-        return publisher;
+        return mapper.map(publisherDTO, Publisher.class);
     }
 }
