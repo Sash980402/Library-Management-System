@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.sub.ManageCatregoryFormController">
+<AnchorPane prefHeight="300.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.popup.ManageCategoryFormController">
    <children>
-      <TextField fx:id="txtCategoryid" layoutX="47.0" layoutY="74.0" promptText="Category ID" />
+      <TextField fx:id="txtCategoryid" layoutX="47.0" layoutY="74.0" onAction="#txtSearchIdOnAction" promptText="Category ID" />
       <TextField fx:id="txtCategoryname" layoutX="47.0" layoutY="130.0" promptText="Category Name" />
       <TableView fx:id="tblCategories" layoutX="220.0" layoutY="74.0" prefHeight="200.0" prefWidth="285.0">
         <columns>

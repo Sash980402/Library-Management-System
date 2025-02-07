@@ -1,10 +1,15 @@
 package org.example.library_management_system.controller.sub;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.example.library_management_system.repo.custom.BookRepo;
 import org.example.library_management_system.repo.util.RepoFactory;
 import org.example.library_management_system.repo.util.RepoTypes;
@@ -14,6 +19,8 @@ import org.example.library_management_system.service.util.OtherDependancies;
 import org.example.library_management_system.service.util.ServiceFactory;
 import org.example.library_management_system.service.util.ServiceType;
 import org.modelmapper.ModelMapper;
+
+import java.io.IOException;
 
 public class ManageBookFormController {
     public TextField txtBookid;
@@ -50,5 +57,19 @@ public class ManageBookFormController {
     }
 
     public void bookidOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnManageCategoryOnAction(ActionEvent actionEvent) {
+        try {
+            Parent load = FXMLLoader.load(getClass().getResource("/view/popup/manage_category_form.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(txtBookid.getScene().getWindow());
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

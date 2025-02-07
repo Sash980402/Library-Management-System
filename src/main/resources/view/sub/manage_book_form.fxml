@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -9,12 +10,12 @@
 
 <AnchorPane prefHeight="564.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.library_management_system.controller.sub.ManageBookFormController">
    <children>
-      <TextField fx:id="txtBookid" layoutX="43.0" layoutY="35.0" onAction="#bookidOnAction" prefHeight="26.0" prefWidth="200.0" promptText="Book ID" />
-      <TextField fx:id="txtBookName" layoutX="43.0" layoutY="70.0" prefHeight="26.0" prefWidth="200.0" promptText="Book Name" />
-      <TextField fx:id="txtBookisbn" layoutX="43.0" layoutY="104.0" prefHeight="26.0" prefWidth="200.0" promptText="ISBN" />
-      <TextField fx:id="txtPrice" layoutX="43.0" layoutY="140.0" prefHeight="26.0" prefWidth="200.0" promptText="Price" />
-      <ComboBox fx:id="cmbPublisher" layoutX="43.0" layoutY="180.0" prefHeight="26.0" prefWidth="200.0" promptText="Select Publisher" />
-      <ComboBox fx:id="cmbMainCategory" layoutX="43.0" layoutY="217.0" prefHeight="26.0" prefWidth="200.0" promptText="Select Name Category" />
+      <TextField fx:id="txtBookid" layoutX="43.0" layoutY="16.0" onAction="#bookidOnAction" prefHeight="26.0" prefWidth="200.0" promptText="Book ID" />
+      <TextField fx:id="txtBookName" layoutX="43.0" layoutY="49.0" prefHeight="26.0" prefWidth="200.0" promptText="Book Name" />
+      <TextField fx:id="txtBookisbn" layoutX="43.0" layoutY="82.0" prefHeight="26.0" prefWidth="200.0" promptText="ISBN" />
+      <TextField fx:id="txtPrice" layoutX="43.0" layoutY="117.0" prefHeight="26.0" prefWidth="200.0" promptText="Price" />
+      <ComboBox fx:id="cmbPublisher" layoutX="43.0" layoutY="154.0" prefHeight="26.0" prefWidth="200.0" promptText="Select Publisher" />
+      <ComboBox fx:id="cmbMainCategory" layoutX="14.0" layoutY="217.0" prefHeight="26.0" prefWidth="163.0" promptText="Select Main Category" />
       <TableView fx:id="tblSubCategories" layoutX="43.0" layoutY="255.0" prefHeight="155.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="colCategoryName" prefWidth="96.0" text="Category Name" />
@@ -25,7 +26,7 @@
       <Button layoutX="372.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="82.0" text="Update" />
       <Button layoutX="472.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="82.0" text="Delete" />
       <Button layoutX="590.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="26.0" prefWidth="82.0" text="Clear" />
-      <TableView fx:id="tblBook" layoutX="257.0" layoutY="34.0" prefHeight="454.0" prefWidth="430.0">
+      <TableView fx:id="tblBook" layoutX="257.0" layoutY="16.0" prefHeight="454.0" prefWidth="430.0">
         <columns>
           <TableColumn fx:id="colBookid" prefWidth="75.0" text="Book ID" />
           <TableColumn fx:id="colBookName" prefWidth="128.800048828125" text="Book Name" />
@@ -39,5 +40,7 @@
             <TableColumn fx:id="colAuthorOption" prefWidth="103.20001220703125" text="Option" />
          </columns>
       </TableView>
+      <Button layoutX="185.0" layoutY="217.0" mnemonicParsing="false" onAction="#btnManageCategoryOnAction" prefHeight="26.0" prefWidth="64.0" text="Manage" />
+      <Label layoutX="43.0" layoutY="191.0" prefHeight="18.0" prefWidth="200.0" text="If category if not click manage" />
    </children>
 </AnchorPane>
