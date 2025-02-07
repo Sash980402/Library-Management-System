@@ -48,7 +48,7 @@ public class AuthorServiceIMPL implements AuthorService {
     public boolean update(AuthorDTO authorDTO) throws AuthorExceptions {
         Author author = convertToEntity(authorDTO);
         try {
-            authorRepo.update(author);
+           return   authorRepo.update(author);
         } catch (SQLException | ClassNotFoundException e) {
             if (((SQLException) e).getErrorCode() == 1406) {
                 String message = ((SQLException) e).getMessage();
@@ -57,18 +57,18 @@ public class AuthorServiceIMPL implements AuthorService {
             }
             throw new AuthorExceptions("Error",e);
         }
-        return false;
+
     }
 
     @Override
     public boolean delete(Integer integer) throws AuthorExceptions{
         try {
-            authorRepo.delete(integer);
+           return authorRepo.delete(integer);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             throw new AuthorExceptions("Error",e);
         }
-        return false;
+
     }
 
     @Override

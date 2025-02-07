@@ -1,9 +1,6 @@
 package org.example.library_management_system.dto.custom;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.example.library_management_system.dto.SuperDTO;
 
 
@@ -11,6 +8,7 @@ import org.example.library_management_system.dto.SuperDTO;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class AuthorDTO implements SuperDTO {
     private int id;
     private String name;

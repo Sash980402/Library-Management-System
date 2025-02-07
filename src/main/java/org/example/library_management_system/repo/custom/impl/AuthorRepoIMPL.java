@@ -14,7 +14,7 @@ public class AuthorRepoIMPL implements AuthorRepo {
     @Override
     public boolean save(Author author) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Author(name,contact) VALUES(?,?)";
-        boolean execute = CrudUtil.execute(sql, author.getId(), author.getName());
+        boolean execute = CrudUtil.execute(sql, author.getName(), author.getContact());
         return execute;
     }
 
@@ -26,9 +26,9 @@ public class AuthorRepoIMPL implements AuthorRepo {
     }
 
     @Override
-    public Optional<Author> search(Integer integer) throws SQLException, ClassNotFoundException {
+    public Optional<Author> search(Integer id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Author WHERE id = ?";
-        ResultSet execute = CrudUtil.execute(sql);
+        ResultSet execute = CrudUtil.execute(sql,id);
         if (execute.next()){
           Author author = new Author();
           author.setId(execute.getInt(1));
