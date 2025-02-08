@@ -6,5 +6,7 @@ public enum RepoTypes {
     CATEGORY_REPO,
     MEMBER_REPO,
     PUBLISHER_REPO,
+    BOOK_AUTHOR_REPO,
+    SUB_CATEGORY_REPO,
 
 }

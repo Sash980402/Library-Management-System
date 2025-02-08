@@ -29,7 +29,7 @@ public class PublisherServiceIMPL implements PublisherService {
     public boolean add(PublisherDTO publisherDTO) throws PublisherException {
         Publisher publisher = convertToEntity(publisherDTO);
         try {
-            return repo.save(publisher);
+            return repo.save(publisher)==null;
         } catch (SQLException | ClassNotFoundException e) {
             if (((SQLException) e).getErrorCode() == 1062) {
                 throw new PublisherException("ID already exists-cannot Save ");

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.library_management_system.controller.sub.ManageBookFormController;
 import org.example.library_management_system.dto.custom.CategoryDTO;
 import org.example.library_management_system.service.custom.CategoryService;
 import org.example.library_management_system.service.util.OtherDependancies;
@@ -22,6 +23,7 @@ public class ManageCategoryFormController {
     public TableView<CategoryTM> tblCategories;
     public TableColumn<CategoryTM,Integer> colCategoryid;
     public TableColumn<CategoryTM,String> colCategoryName;
+    private ManageBookFormController baseController;
 
     CategoryService service = (CategoryService) ServiceFactory.getInstance().getService(ServiceType.CATEGORY_SERVICE);
     ModelMapper mapper = OtherDependancies.getInstance().getMapper();
@@ -40,7 +42,7 @@ public class ManageCategoryFormController {
         try {
             List<CategoryTM> list = service.getAll().stream().map(e -> mapper.map(e, CategoryTM.class)).toList();
             tblCategories.setItems(FXCollections.observableArrayList(list));
-
+            if (baseController!=null)baseController.loadCategoryData();
         } catch (ServiceExeption e) {
             e.printStackTrace();
         }
@@ -141,5 +143,9 @@ public class ManageCategoryFormController {
         }catch (ServiceExeption e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    public void setBaseController(ManageBookFormController baseController) {
+        this.baseController = baseController;
     }
 }

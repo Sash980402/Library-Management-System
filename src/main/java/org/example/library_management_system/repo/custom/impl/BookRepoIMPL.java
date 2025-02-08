@@ -3,7 +3,9 @@ package org.example.library_management_system.repo.custom.impl;
 import org.example.library_management_system.entity.custom.Book;
 import org.example.library_management_system.repo.custom.BookRepo;
 import org.example.library_management_system.util.CrudUtil;
+import org.example.library_management_system.util.DBConnection;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,11 +14,24 @@ import java.util.Optional;
 
 public class BookRepoIMPL implements BookRepo {
     @Override
-    public boolean save(Book book) throws SQLException, ClassNotFoundException {
+    public Book save(Book book) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO book(id,name,isbn,price,publisher_id,main_category_id)"+
         "VALUES(?,?,?,?,?,?)";
-        boolean execute = CrudUtil.execute(sql, book.getId(), book.getName(), book.getIsbn(), book.getPrice(), book.getPublisherId(), book.getMainCategoryId());
-        return execute;
+        //boolean execute = CrudUtil.execute(sql, book.getId(), book.getName(), book.getIsbn(), book.getPrice(), book.getPublisherId(), book.getMainCategoryId());
+        PreparedStatement ps = DBConnection.getInstance().getConnection().prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, book.getId());
+        ps.setString(2, book.getName());
+        ps.setString(3, book.getIsbn());
+        ps.setDouble(4, book.getPrice());
+        ps.setInt(5, book.getPublisherId());
+        ps.setInt(6, book.getMainCategoryId());
+        int affectedRows = ps.executeUpdate();
+        ResultSet generatedKeys = ps.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            book.setId(generatedKeys.getInt(1));
+        }
+
+        return book;
     }
 
     @Override

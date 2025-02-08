@@ -14,6 +14,8 @@ public class RepoFactory {
     private final CategoryRepo categoryRepo;
     private final MemberRepo memberRepo;
     private final PublisherRepo publisherRepo;
+    private final BookAuthorRepo bookAuthorRepo;
+    private final SubCategoriesRepo subCategoriesRepo;
 
     private RepoFactory() {
         authorRepo = new AuthorRepoIMPL();
@@ -21,6 +23,8 @@ public class RepoFactory {
         categoryRepo = new CategoryRepoIMPL();
         memberRepo = new MemberRepoIMPL();
         publisherRepo = new PublisherRepoIMPL();
+        bookAuthorRepo = new BookAuthorRepoIMPL();
+        subCategoriesRepo = new SubCategoriesRepoIMPL();
     }
 
     public <T extends CrudRepository>T getRepo(RepoTypes type) {
@@ -30,6 +34,8 @@ public class RepoFactory {
             case CATEGORY_REPO : return (T) this.categoryRepo;
             case MEMBER_REPO : return (T) this.memberRepo;
             case PUBLISHER_REPO : return (T) this.publisherRepo;
+            case BOOK_AUTHOR_REPO: return (T) this.bookAuthorRepo;
+            case SUB_CATEGORY_REPO: return (T) this.subCategoriesRepo;
             default : return null;
         }
     }
